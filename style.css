@@ -1,0 +1,440 @@
+/* =========================================================
+   Portfolio Souhill D-RUSH — feuille de style
+   Thème sombre inspiré d'un logiciel de montage vidéo
+   ========================================================= */
+
+/* ---------- 1. Couleurs et réglages généraux ---------- */
+
+:root {
+  --fond: #131519;          /* fond de la page */
+  --panneau: #1c1f26;       /* fond des cartes et panneaux */
+  --panneau-clair: #262a33; /* pistes de la timeline */
+  --bordure: #2f343f;
+  --texte: #e6e8ec;
+  --texte-doux: #9aa1ad;
+  --accent: #3d7fe0;        /* bleu moyen */
+  --accent-clair: #6ea0ec;
+  --rouge-rec: #e5484d;
+  --police: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --police-mono: Consolas, "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--fond);
+  color: var(--texte);
+  font-family: var(--police);
+  line-height: 1.6;
+}
+
+h1, h2, h3, p, ul, figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent-clair);
+  outline-offset: 3px;
+}
+
+/* ---------- 2. En-tête et menu ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 14px 24px;
+  background-color: var(--panneau);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Petit voyant rouge, comme un enregistrement en cours */
+.rec-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--rouge-rec);
+}
+
+h1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: var(--texte-doux);
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+nav a {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: var(--texte-doux);
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  background-color: var(--panneau-clair);
+  color: var(--texte);
+}
+
+/* ---------- 3. Sections ---------- */
+
+section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 72px 24px;
+  scroll-margin-top: 80px; /* évite que le menu fixe cache le titre */
+}
+
+section + section {
+  border-top: 1px solid var(--bordure);
+}
+
+/* Le timecode qui numérote chaque section */
+.timecode {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 2px 10px;
+  border: 1px solid var(--bordure);
+  border-radius: 4px;
+  background-color: var(--panneau);
+  color: var(--accent-clair);
+  font-family: var(--police-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+h2 {
+  font-size: 1.9rem;
+  line-height: 1.25;
+}
+
+.section-intro {
+  margin-top: 8px;
+  margin-bottom: 32px;
+  color: var(--texte-doux);
+}
+
+/* ---------- 4. Accueil ---------- */
+
+.hero h2 {
+  max-width: 18em;
+  font-size: 2.6rem;
+}
+
+.hero em {
+  color: var(--accent-clair);
+  font-style: normal;
+}
+
+.lead {
+  max-width: 38em;
+  margin-top: 20px;
+  color: var(--texte-doux);
+  font-size: 1.1rem;
+}
+
+.lead strong {
+  color: var(--texte);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* ---------- 5. Boutons ---------- */
+
+/* Bouton principal avec un triangle « lecture » */
+.btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 6px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.btn-play::before {
+  content: "";
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+.btn-play:hover {
+  background-color: var(--accent-clair);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border: 1px solid var(--bordure);
+  border-radius: 6px;
+  color: var(--texte);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+}
+
+/* ---------- 6. Timeline décorative ---------- */
+
+.timeline {
+  position: relative;
+  margin-top: 56px;
+  padding: 10px;
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  background-color: var(--panneau);
+  overflow: hidden;
+}
+
+/* La règle graduée en haut de la timeline */
+.ruler {
+  height: 14px;
+  margin-bottom: 8px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--bordure) 0,
+    var(--bordure) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+}
+
+.track {
+  position: relative;
+  height: 26px;
+  margin-top: 6px;
+  border-radius: 4px;
+  background-color: var(--panneau-clair);
+}
+
+.track-audio {
+  height: 18px;
+}
+
+/* Les clips posés sur les pistes */
+.clip {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  border-radius: 3px;
+}
+
+.clip-a { left: 2%;  width: 26%; background-color: var(--accent); }
+.clip-b { left: 30%; width: 18%; background-color: #5b6ee1; }
+.clip-c { left: 50%; width: 34%; background-color: var(--accent); }
+.clip-d { left: 12%; width: 22%; background-color: #2f9e8f; }
+.clip-e { left: 58%; width: 20%; background-color: #2f9e8f; }
+.clip-f { left: 2%;  width: 82%; background-color: #4b5261; }
+
+/* La tête de lecture */
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 42%;
+  width: 2px;
+  background-color: var(--rouge-rec);
+}
+
+/* ---------- 7. Réalisations ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  background-color: var(--panneau);
+  overflow: hidden;
+}
+
+.card h3 {
+  padding: 16px 18px 0;
+  font-size: 1.1rem;
+}
+
+.card p {
+  padding: 6px 18px 20px;
+  color: var(--texte-doux);
+  font-size: 0.95rem;
+}
+
+/* Bloc de couleur à la place de la miniature de la vidéo */
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+}
+
+.thumb-1 { background: linear-gradient(135deg, #24457f, #3d7fe0); }
+.thumb-2 { background: linear-gradient(135deg, #2b3a67, #5b6ee1); }
+.thumb-3 { background: linear-gradient(135deg, #1e5a66, #2f9e8f); }
+
+/* Rond avec un triangle « lecture » au centre */
+.play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.play-icon::before {
+  content: "";
+  margin-left: 4px;
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+/* ---------- 8. Miniatures ---------- */
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.mini {
+  aspect-ratio: 16 / 9; /* format d'une miniature YouTube */
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+}
+
+.mini-1 { background: linear-gradient(135deg, #3d7fe0, #1b2f57); }
+.mini-2 { background: linear-gradient(135deg, #5b6ee1, #22264d); }
+.mini-3 { background: linear-gradient(135deg, #2f9e8f, #173d42); }
+.mini-4 { background: linear-gradient(135deg, #6ea0ec, #24457f); }
+.mini-5 { background: linear-gradient(135deg, #4b5261, #1c1f26); }
+.mini-6 { background: linear-gradient(135deg, #24457f, #5b6ee1); }
+
+figcaption {
+  margin-top: 8px;
+  color: var(--texte-doux);
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+}
+
+/* ---------- 9. Compétences ---------- */
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Chaque compétence ressemble à un clip sur une piste */
+.skills li {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  border: 1px solid var(--bordure);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  background-color: var(--panneau);
+}
+
+.skills span {
+  color: var(--texte-doux);
+  font-size: 0.9rem;
+}
+
+/* ---------- 10. Contact et pied de page ---------- */
+
+.contact .btn-play {
+  word-break: break-all;
+}
+
+footer {
+  padding: 24px;
+  border-top: 1px solid var(--bordure);
+  background-color: var(--panneau);
+  color: var(--texte-doux);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---------- 11. Adaptation aux petits écrans ---------- */
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 12px 16px;
+  }
+
+  nav a {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  section {
+    padding: 48px 16px;
+    scroll-margin-top: 130px;
+  }
+
+  .hero h2 {
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
